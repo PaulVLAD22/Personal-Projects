@@ -78,43 +78,86 @@ var score=0;
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
   }
-
+var i=0;
+var j=0;
 function renderQuestions(){
     
-    let i=0;
-    let j=0;
-    while (i==j){
+    do{
         i=getRandomInt(items.length-1);
         j=getRandomInt(items.length-1);
+    }while(i==j);
+
+    if(questionNr!=0){
+        leftInventionResult(i);
+        rightInventionResult(j);
     }
-    leftInvention(i);
-    rightInvention(j);
+    else{
+        leftInventionDisplay();
+        rightInventionDisplay();
+    }
     questionNr+=1;
-    
 }
-function leftInvention(i){
-    if(questionNr!=0)
+function leftInventionResult(i){
+    var leftYear=document.createElement('div');
+    leftYear.id="leftYear";
+    inventionL=items[i].time+" "+items[i].year;
+    leftYear.innerHTML=inventionL;
+    document.getElementById("left-div").appendChild(leftYear);
+    setTimeout(leftInventionRemove,1000);
+    console.log("Result");
+}
+function rightInventionResult(j){
+    var rightYear=document.createElement('div');
+    rightYear.id="rightYear";
+    inventionL=items[j].time+" "+items[j].year;
+    rightYear.innerHTML=inventionL;
+    document.getElementById("right-div").appendChild(rightYear);
+    setTimeout(rightInventionRemove,1000);
+}
+
+
+function leftInventionRemove(){
+    if(questionNr!=0){
         document.getElementById("left-div").removeChild(document.getElementById("stDiv"));
+        document.getElementById("left-div").removeChild(document.getElementById("leftYear"));
+    }
+    oneSecondLeft();
+    console.log("Remove");
+}
+function leftInventionDisplay(){
+    console.log("Display");
     var stDiv=document.createElement('div');
     stDiv.id="stDiv";
     inventionL=items[i].name;
     stDiv.innerHTML=inventionL;
     document.getElementById("left-div").appendChild(stDiv);
 }
-function rightInvention(j){
-    if(questionNr!=0)
+function rightInventionRemove(){
+    if(questionNr!=0){
         document.getElementById("right-div").removeChild(document.getElementById("drDiv"));
+        document.getElementById("right-div").removeChild(document.getElementById("rightYear"));
+    }
+    oneSecondRight();
+
+}
+function rightInventionDisplay(){
     var drDiv=document.createElement('div');
     drDiv.id="drDiv";
     inventionR=items[j].name;
     drDiv.innerHTML=inventionR;
     document.getElementById("right-div").appendChild(drDiv);
 }
+function oneSecondLeft(){
+    var timeout=setTimeout(leftInventionDisplay,1000);
+}
+function oneSecondRight(){
+    var timeout=setTimeout(rightInventionDisplay,1000);
+}
 
 document.getElementById('left-div').addEventListener('click',renderQuestions);
 document.getElementById('right-div').addEventListener('click',renderQuestions);
 
-
+// AI DE FACUT SCOR, LEADERBOARD SI LOG IN
 
 
 
