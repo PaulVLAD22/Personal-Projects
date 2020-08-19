@@ -157,7 +157,8 @@ function oneSecondRight(){
 document.getElementById('left-div').addEventListener('click',renderQuestions);
 document.getElementById('right-div').addEventListener('click',renderQuestions);
 
-// AI DE FACUT SCOR, LEADERBOARD SI LOG IN
+// AI DE FACUT SCOR, LEADERBOARD SI LOG IN#
+// NU LASA SA CLICK-uiasca in timpul timeout-ului pana apare inventie noua
 
 
 
