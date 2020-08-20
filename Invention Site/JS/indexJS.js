@@ -159,6 +159,8 @@ document.getElementById('right-div').addEventListener('click',renderQuestions);
 
 // AI DE FACUT SCOR, LEADERBOARD SI LOG IN#
 // NU LASA SA CLICK-uiasca in timpul timeout-ului pana apare inventie noua
-
+// CAUTA SA ADAUGI SI POZA PT FIECARE DINTRE OBIECTELE DIN ITEMS
+// SI , IN CEL MAI  BUN CAZ, DOWNLAD-EZI PRIMA POZA CARE APARE
+// PE GOOGLE IMAGES SAU ALT SITE
 
 
