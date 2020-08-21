@@ -32,12 +32,15 @@ span.fade{
 
 
 #big-div{
+    position: absolute;
     display:flex;
     width:80%;
     height:70%;
     margin:auto;
     margin-top:3%;
+    margin-left:10%;
     border:2px;
+    z-index: 50;
 }
 .item{
     flex:50%;
@@ -67,5 +70,68 @@ span.fade{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size:3em;
     position: relative;
+}
+#leftYear{
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size:3em;
+    position: relative;
+}
+#rightYear{
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size:3em;
+    position: relative;
 
+}
+.result{
+    z-index: 100;
+    display:flex;
+    position: absolute;
+    width:80%;
+    height:70%;
+    top:15%;
+    margin:auto;
+    border:2px;
+    margin-left:10%;
+}
+#correct{
+    display:none;
+}
+
+#leftCorrect{
+    margin-right:1%;
+    background-color:green;
+    background-image:url(Images/tick.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position:center;
+}
+#rightCorrect{
+    margin-left:1%;
+    background-color: green;
+    background-image:url(Images/tick.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position:center;
+}
+
+#incorrect{
+    display: none;
+}
+#leftIncorrect{
+    margin-right:1%;
+    background-color:red;
+    background-image:url(Images/X.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position:center;
+}
+#rightIncorrect{
+    margin-left:1%;
+    background-color:red;
+    background-image:url(Images/X.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position:center;
 }
