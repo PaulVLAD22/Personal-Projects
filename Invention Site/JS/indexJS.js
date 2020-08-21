@@ -166,3 +166,7 @@ document.getElementById('right-div').addEventListener('click',renderQuestions);
 //si ceva verde can e corect
 
 
+// poti sa pui peste tot ecranul  un div care la apasare nu face nimic 
+// (in timpul timpului care trece)
+//gen peste body si pui pozitie absoluta width 100% length 100%
+
