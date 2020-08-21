@@ -163,4 +163,6 @@ document.getElementById('right-div').addEventListener('click',renderQuestions);
 // SI , IN CEL MAI  BUN CAZ, DOWNLAD-EZI PRIMA POZA CARE APARE
 // PE GOOGLE IMAGES SAU ALT SITE
 
+//si ceva verde can e corect
+
 
