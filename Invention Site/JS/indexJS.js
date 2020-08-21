@@ -159,8 +159,15 @@ document.getElementById('right-div').addEventListener('click',renderQuestions);
 
 // AI DE FACUT SCOR, LEADERBOARD SI LOG IN#
 // NU LASA SA CLICK-uiasca in timpul timeout-ului pana apare inventie noua
+// CAUTA SA ADAUGI SI POZA PT FIECARE DINTRE OBIECTELE DIN ITEMS
+// SI , IN CEL MAI  BUN CAZ, DOWNLAD-EZI PRIMA POZA CARE APARE
+// PE GOOGLE IMAGES SAU ALT SITE
 
 //div verde/rosu
 
 
+
+// poti sa pui peste tot ecranul  un div care la apasare nu face nimic 
+// (in timpul timpului care trece)
+//gen peste body si pui pozitie absoluta width 100% length 100%
 
