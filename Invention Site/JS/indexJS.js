@@ -235,3 +235,4 @@ document.getElementById('right-div').addEventListener('click', renderQuestions);
 
 // MAI AI DE CAUTAT POZE CU API PT FIECARE DESCOPERIRE
 
+// FA MAI MARI DIV-URILE  DE RASPUNS CORRECT/GRESIT
