@@ -124,9 +124,9 @@ function questionCorrect(mouseX,mouseY,lastI,lastJ){
     }
 }
 
-function leftInventionResultCorrect(i) {// ai de schimbat 
+function leftInventionResultCorrect(i) { //give result div (C/I) info of previous info
     document.getElementById("correct").style.display="flex";
-    ansCorrect=1;
+    ansCorrect=1;// 
     var leftYear = document.createElement('div');
     leftYear.id = "leftYear";
     inventionL = items[i].time + " " + items[i].year;
@@ -136,7 +136,7 @@ function leftInventionResultCorrect(i) {// ai de schimbat
     console.log("Result");
 
 }
-function rightInventionResultCorrect(j) {// ai de schimbat
+function rightInventionResultCorrect(j) {// give result div (C/I) info of previous info
     document.getElementById("correct").style.display="flex";
     var rightYear = document.createElement('div');
     rightYear.id = "rightYear";
@@ -146,9 +146,9 @@ function rightInventionResultCorrect(j) {// ai de schimbat
     setTimeout(rightInventionRemove, 1000);
 }
 
-function leftInventionResultIncorrect(i){
+function leftInventionResultIncorrect(i){// give result div (C/I) info of previous info
     document.getElementById("incorrect").style.display="flex";
-    ansCorrect=0;
+    ansCorrect=0;//
     var leftYear = document.createElement('div');
     leftYear.id = "leftYear";
     inventionL = items[i].time + " " + items[i].year;
@@ -169,6 +169,7 @@ function rightInventionResultIncorrect(j){
 
 
 function leftInventionRemove() {
+    // remove the previous invention 
     if (questionNr != 0) {
         document.getElementById("left-div").removeChild(document.getElementById("stDiv"));
         
@@ -177,7 +178,7 @@ function leftInventionRemove() {
     console.log("Remove");
 }
 function leftInventionDisplay() {
-    // first remove the answer of last question
+    // first remove the answer of last question div
     if (questionNr!=0){
         if(ansCorrect==1){
             document.getElementById("leftCorrect").removeChild(document.getElementById("leftYear"));
@@ -204,7 +205,7 @@ function rightInventionRemove() {
 
 }
 function rightInventionDisplay() {
-    // first remove the answer of last question
+    // first remove the answer of last question div 
     if(questionNr!=0){
         if(ansCorrect==1){
             document.getElementById("rightCorrect").removeChild(document.getElementById("rightYear"));
@@ -235,4 +236,4 @@ document.getElementById('right-div').addEventListener('click', renderQuestions);
 
 // MAI AI DE CAUTAT POZE CU API PT FIECARE DESCOPERIRE
 
-// FA MAI MARI DIV-URILE  DE RASPUNS CORRECT/GRESIT
+// FA MAI MARI DIV-URILE  DE RASPUNS CORRECT/GRESIt
