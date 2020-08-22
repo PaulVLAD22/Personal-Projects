@@ -112,7 +112,7 @@ function renderQuestions(e) {
     questionNr += 1;
 }
 function questionCorrect(mouseX,mouseY,lastI,lastJ){
-    if (mouseX<50*screen.width/100){// chose left
+    if (mouseX<50*screen.width/100){// chose left // something wrong here
         if (items[lastI].time=="BC" && items[lastJ].time=="BC" && items[lastI].year>items[lastJ].year || items[lastI].time=="BC" && items[lastJ].time=="AD" || items[lastI].time=="AD"&& items[lastJ].time=="AD" && items[lastI].year<items[lastJ].year)
             return 1;
         else
@@ -222,7 +222,7 @@ function gameSummary(){
     document.getElementById("incorrect").style.display="none";
     document.getElementById("gameSummaryDiv").style.display="flex";
     document.getElementById("scoreInfo").innerHTML=score;
-    document.getElementById("scoreSave").innerHTML="<h1>Enter your username and save your score in the leaderboard.</h1><br><h2>Username</h2><input type='text' id='username'></input><br><br><br><button id='saveLeaderboard'><h3>Submit</h3></button><a href='leaderboard.html' id='seeLeaderBoard'><h2>View Leaderboard</h2><br><br><a href='index.html'><h1>Try Again</h1></a>" ;
+    document.getElementById("scoreSave").innerHTML="<h1>You were supposed to choose the earlier invented object. </h1><br><h2>Username</h2><input type='text' id='username'></input><br><br><br><button id='saveLeaderboard'><h3>Submit</h3></button><a href='leaderboard.html' id='seeLeaderBoard'><h2>View Leaderboard</h2><br><br><a href='index.html'><h1>Try Again</h1></a>" ;
     document.getElementById("saveLeaderboard").addEventListener('click',writeScore);
 }
 
