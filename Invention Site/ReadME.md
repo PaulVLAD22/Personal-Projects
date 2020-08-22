@@ -1,3 +1,6 @@
+You choose the earlier invented object(info obtained from a txt file) and your score is stored , when you choose wrong, after you type a name, in a json file from which the leaderboard html file gets its list of scores.
+
+
 Image 1 - choose what was invented earlier<br>
 Image 2 - enter your name to save your score in the leaderboard (you just saw image 4)<br>
 Image 3 - correct answer<br>
