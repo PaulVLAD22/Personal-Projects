@@ -155,7 +155,7 @@ function leftInventionResultIncorrect(i){// give result div (C/I) info of previo
     inventionL = items[i].time + " " + items[i].year;
     leftYear.innerHTML = inventionL;
     document.getElementById("leftIncorrect").appendChild(leftYear);
-    setTimeout(gameSummary, 1000);
+    setTimeout(gameSummary, 2000);
     console.log("Result");
 }
 function rightInventionResultIncorrect(j){
