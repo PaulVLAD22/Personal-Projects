@@ -1,3 +1,23 @@
 {
-    
+    "Leaderboard": [
+        {
+            "score": 0,
+            "username": "vlad"
+        },
+        {
+            "id": "f21f5548-5963-4693-b55e-aed783ec88fd",
+            "score": 0,
+            "username": "a"
+        },
+        {
+            "id": "32f0d5f1-4998-4bc3-903f-94d5e21d3acb",
+            "score": 0,
+            "username": "a"
+        },
+        {
+            "id": "45af5618-0c5b-4047-adf1-480cea016148",
+            "score": 0,
+            "username": "prost"
+        }
+    ]
 }

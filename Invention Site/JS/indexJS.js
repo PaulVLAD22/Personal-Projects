@@ -50,7 +50,7 @@ function readTextFile(file) {
     }; rawFile.send(null);
 }
 
-readTextFile("dataSingleLineBun.txt")
+readTextFile("Inventions.txt")
 var array;
 function readInArray(allText) {
     var array = allText.split(',');
@@ -79,7 +79,8 @@ var i = 0;
 var j = 0;
 var lastI = 0;
 var lastJ = 0;
-var ansCorrect=0;
+
+
 function renderQuestions(e) {
     mouseX=e.clientX
     mouseY=e.clientY
@@ -96,6 +97,8 @@ function renderQuestions(e) {
         if(questionCorrect(mouseX,mouseY,lastI,lastJ)){
             leftInventionResultCorrect(lastI);
             rightInventionResultCorrect(lastJ);
+            score++;
+            document.getElementById("scoreShow").innerHTML="Score "+score;
         }
         else{
             leftInventionResultIncorrect(lastI);
@@ -109,14 +112,14 @@ function renderQuestions(e) {
     questionNr += 1;
 }
 function questionCorrect(mouseX,mouseY,lastI,lastJ){
-    if (mouseX<50*screen.width/100){// a ales stanga
+    if (mouseX<50*screen.width/100){// chose left
         if (items[lastI].time=="BC" && items[lastJ].time=="BC" && items[lastI].year>items[lastJ].year || items[lastI].time=="BC" && items[lastJ].time=="AD" || items[lastI].time=="AD"&& items[lastJ].time=="AD" && items[lastI].year<items[lastJ].year)
             return 1;
         else
             return 0;
     }
-    else{//a ales dreapta
-        if (items[lastJ].time=="BC" && items[lastI].time=="BC" && items[lastJ].year>items[lastI].year || items[lastJ].time=="BC" **items[lastI].time=="AD" || items[lastJ].time=="AD" && items[lastI].time=="AD" && items[lastJ].year<items[lastI].year)
+    else{// chose right
+        if (items[lastJ].time=="BC" && items[lastI].time=="BC" && items[lastJ].year>items[lastI].year || items[lastJ].time=="BC" && items[lastI].time=="AD" || items[lastJ].time=="AD" && items[lastI].time=="AD" && items[lastJ].year<items[lastI].year)
             return 1;
         else
             return 0;
@@ -125,8 +128,7 @@ function questionCorrect(mouseX,mouseY,lastI,lastJ){
 }
 
 function leftInventionResultCorrect(i) { //give result div (C/I) info of previous info
-    document.getElementById("correct").style.display="flex";
-    ansCorrect=1;// 
+    document.getElementById("correct").style.display="flex"; 
     var leftYear = document.createElement('div');
     leftYear.id = "leftYear";
     inventionL = items[i].time + " " + items[i].year;
@@ -148,13 +150,12 @@ function rightInventionResultCorrect(j) {// give result div (C/I) info of previo
 
 function leftInventionResultIncorrect(i){// give result div (C/I) info of previous info
     document.getElementById("incorrect").style.display="flex";
-    ansCorrect=0;//
     var leftYear = document.createElement('div');
     leftYear.id = "leftYear";
     inventionL = items[i].time + " " + items[i].year;
     leftYear.innerHTML = inventionL;
     document.getElementById("leftIncorrect").appendChild(leftYear);
-    setTimeout(leftInventionRemove, 1000);
+    setTimeout(gameSummary, 1000);
     console.log("Result");
 }
 function rightInventionResultIncorrect(j){
@@ -164,7 +165,7 @@ function rightInventionResultIncorrect(j){
     inventionL = items[j].time + " " + items[j].year;
     rightYear.innerHTML = inventionL;
     document.getElementById("rightIncorrect").appendChild(rightYear);
-    setTimeout(rightInventionRemove, 1000);
+    
 }
 
 
@@ -180,15 +181,8 @@ function leftInventionRemove() {
 function leftInventionDisplay() {
     // first remove the answer of last question div
     if (questionNr!=0){
-        if(ansCorrect==1){
-            document.getElementById("leftCorrect").removeChild(document.getElementById("leftYear"));
-            document.getElementById("correct").style.display="none";
-        }
-        else{
-            document.getElementById("leftIncorrect").removeChild(document.getElementById("leftYear"));
-            document.getElementById("incorrect").style.display="none";
-
-        }
+        document.getElementById("leftCorrect").removeChild(document.getElementById("leftYear"));
+        document.getElementById("correct").style.display="none";
     }
     console.log("Display");
     var stDiv = document.createElement('div');
@@ -207,14 +201,9 @@ function rightInventionRemove() {
 function rightInventionDisplay() {
     // first remove the answer of last question div 
     if(questionNr!=0){
-        if(ansCorrect==1){
-            document.getElementById("rightCorrect").removeChild(document.getElementById("rightYear"));
-            document.getElementById("correct").style.display="none";
-        }
-        else{
-            document.getElementById("rightIncorrect").removeChild(document.getElementById("rightYear"));
-            document.getElementById("incorrect").style.display="none";
-        }
+        document.getElementById("rightCorrect").removeChild(document.getElementById("rightYear"));
+        document.getElementById("correct").style.display="none";
+        
     }
     var drDiv = document.createElement('div');
     drDiv.id = "drDiv";
@@ -229,11 +218,46 @@ function oneSecondRight() {
     var timeout = setTimeout(rightInventionDisplay, 1000);
 }
 
+function gameSummary(){
+    document.getElementById("incorrect").style.display="none";
+    document.getElementById("gameSummaryDiv").style.display="flex";
+    document.getElementById("scoreInfo").innerHTML=score;
+    document.getElementById("scoreSave").innerHTML="<h1>Enter your username and save your score in the leaderboard.</h1><br><h2>Username</h2><input type='text' id='username'></input><br><br><br><button id='saveLeaderboard'><h3>Submit</h3></button><a href='leaderboard.html' id='seeLeaderBoard'><h2>View Leaderboard</h2><br><br><a href='index.html'><h1>Try Again</h1></a>" ;
+    document.getElementById("saveLeaderboard").addEventListener('click',writeScore);
+}
+
+
 document.getElementById('left-div').addEventListener('click', renderQuestions);
 document.getElementById('right-div').addEventListener('click', renderQuestions);
 
-// AI DE FACUT SCOR, LEADERBOARD SI LOG IN#
+
 
 // MAI AI DE CAUTAT POZE CU API PT FIECARE DESCOPERIRE
 
-// FA MAI MARI DIV-URILE  DE RASPUNS CORRECT/GRESIt
+
+
+// NODE PART
+
+function writeScore(){
+    var username=document.getElementById("username").value;
+    console.log(username);
+    if (username.length!=0){
+        var newScore={
+            score:score,
+            username:username
+        }
+        fetch('http://localhost:3000/Leaderboard', {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newScore)
+        }).then(function(response) {
+            console.log(response);
+        })
+    }
+}
+
+
+
+
