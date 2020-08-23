@@ -94,7 +94,7 @@ function renderQuestions(e) {
     } while (i == j);
 
     if (questionNr != 0) {
-        if(questionCorrect(mouseX,mouseY,lastI,lastJ)){
+        if(questionCorrect(mouseX,mouseY,lastI,lastJ)==1){
             leftInventionResultCorrect(lastI);
             rightInventionResultCorrect(lastJ);
             score++;
@@ -113,7 +113,7 @@ function renderQuestions(e) {
 }
 function questionCorrect(mouseX,mouseY,lastI,lastJ){
     if (mouseX<50*screen.width/100){// chose left // something wrong here
-        if (items[lastI].time=="BC" && items[lastJ].time=="BC" && items[lastI].year>items[lastJ].year || items[lastI].time=="BC" && items[lastJ].time=="AD" || items[lastI].time=="AD"&& items[lastJ].time=="AD" && items[lastI].year<items[lastJ].year)
+        if ((items[lastI].time=="BC" && items[lastJ].time=="BC" && items[lastI].year>items[lastJ].year) || (items[lastI].time=="BC" && items[lastJ].time=="AD") || (items[lastI].time=="AD"&& items[lastJ].time=="AD" && items[lastI].year<items[lastJ].year))
             return 1;
         else
             return 0;
