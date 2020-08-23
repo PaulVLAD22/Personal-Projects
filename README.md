@@ -1,4 +1,4 @@
-<h2>Projects Of which I am proud will also be mentioned in my CV-s and linkedIn profile</h2>
+#Personal Projects
 <h3>The better Projects : </h3>
 
 
