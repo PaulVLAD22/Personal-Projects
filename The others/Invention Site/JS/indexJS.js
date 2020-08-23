@@ -219,6 +219,8 @@ function oneSecondRight() {
 }
 
 function gameSummary(){
+    document.getElementById("left-div").removeChild(document.getElementById("stDiv"));
+    document.getElementById("right-div").removeChild(document.getElementById("drDiv"));
     document.getElementById("incorrect").style.display="none";
     document.getElementById("gameSummaryDiv").style.display="flex";
     document.getElementById("scoreInfo").innerHTML=score;
