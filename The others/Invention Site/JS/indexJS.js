@@ -50,7 +50,7 @@ function readTextFile(file) {
     }; rawFile.send(null);
 }
 
-readTextFile("Inventions.txt")
+readTextFile("Inventions.txt");
 var array;
 function readInArray(allText) {
     var array = allText.split(',');
@@ -81,9 +81,9 @@ var lastI = 0;
 var lastJ = 0;
 
 
-function renderQuestions(e) {
-    mouseX=e.clientX
-    mouseY=e.clientY
+function renderQuestions(side) {
+    console.log("render"+side);
+
     if (questionNr != 0) {
         lastI = i;
         lastJ = j;
@@ -94,7 +94,8 @@ function renderQuestions(e) {
     } while (i == j);
 
     if (questionNr != 0) {
-        if(questionCorrect(mouseX,mouseY,lastI,lastJ)==1){
+        if(questionCorrect(side,lastI,lastJ)==1){
+            console.log(questionCorrect(side,lastI,lastJ));
             leftInventionResultCorrect(lastI);
             rightInventionResultCorrect(lastJ);
             score++;
@@ -111,8 +112,8 @@ function renderQuestions(e) {
     }
     questionNr += 1;
 }
-function questionCorrect(mouseX,mouseY,lastI,lastJ){
-    if (mouseX<50*screen.width/100){// chose left // something wrong here
+function questionCorrect(side,lastI,lastJ){
+    if (side==0){// chose left 
         if ((items[lastI].time=="BC" && items[lastJ].time=="BC" && items[lastI].year>items[lastJ].year) || (items[lastI].time=="BC" && items[lastJ].time=="AD") || (items[lastI].time=="AD"&& items[lastJ].time=="AD" && items[lastI].year<items[lastJ].year))
             return 1;
         else
@@ -165,7 +166,6 @@ function rightInventionResultIncorrect(j){
     inventionL = items[j].time + " " + items[j].year;
     rightYear.innerHTML = inventionL;
     document.getElementById("rightIncorrect").appendChild(rightYear);
-    
 }
 
 
@@ -229,14 +229,8 @@ function gameSummary(){
 }
 
 
-document.getElementById('left-div').addEventListener('click', renderQuestions);
-document.getElementById('right-div').addEventListener('click', renderQuestions);
-
-
-
-// MAI AI DE CAUTAT POZE CU API PT FIECARE DESCOPERIRE
-
-
+document.getElementById('left-div').addEventListener('click', function(){renderQuestions(0)});
+document.getElementById('right-div').addEventListener('click', function(){renderQuestions(1)});
 
 // NODE PART
 
