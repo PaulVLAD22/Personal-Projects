@@ -1,4 +1,5 @@
 <h1>Personal Projects</h1>
+(To see images of the projects I'm describing here acces them in their specific folder)
 <h3>The better Projects : </h3>
 
 
