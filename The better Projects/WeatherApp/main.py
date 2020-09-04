@@ -87,6 +87,11 @@ def displayMoreInformation(data, temp):
 
 
 
+def saveSearch(): #Save the user's last 3 searches and create shortcut buttons
+    pass
+
+
+
 
 # Getting Information from api
 def getInfoName(city):
@@ -97,6 +102,7 @@ def getInfoName(city):
         if (webUrl.getcode() == 200):
             data = webUrl.read()
             displayCelsius(data)
+            saveSearch(city,data)
         else:
             receivedError(city)
     except:
