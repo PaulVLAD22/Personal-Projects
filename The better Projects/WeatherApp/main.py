@@ -2,6 +2,7 @@ import urllib.request
 import json
 from tkinter import *
 from numpy import round
+import sqlite3
 
 
 # Displaying error
@@ -88,7 +89,29 @@ def displayMoreInformation(data, temp):
 
 
 def saveSearch(city,data): #Save the user's last 3 searches and create shortcut buttons
-    pass
+    theJSON=json.loads(data)
+    temp=round(theJSON["main"]["temp"]-273.15,1)
+    conn=sqlite3.connect('searched_cities.db')
+    c=conn.cursor()
+
+    #Query the database to see if there are already 3 cities
+    c.execute=("SELECT * from cities")
+    cities_list=c.fetchall()
+    nr=len(cities_list)
+
+    if (nr<=2):
+        #Just Insert
+        c.execute("INSERT INTO cities VALUES(:name,:temp)",
+                    {
+                        'name':city,
+                        'temp':temp
+                    })
+    else:
+        #Delete the first and insert
+        city_delete=cities_list[0][0]
+        print(city_delete)
+        #c.execute("DELETE FROM cities WHERE name=")
+
 
 
 
@@ -115,6 +138,20 @@ def main():
     root.title("Live Weather")
     root.geometry("400x200")
     root.configure(background='white')
+
+    #Connection to db
+    conn=sqlite3.connect('searched_cities.db')
+    c=conn.cursor()
+
+    #Create Table if needed
+    try:
+        c.execute("""CREATE TABLE cities(
+                    name text,
+                    temp real)""")
+    except:
+        #DISPLAY THE CITIES THAT HAVE BEEN SEARCHED
+        print("Already Created")
+
 
     # Widgets
     enterCityLabel = Label(root, text="Enter a city", font=('Arial', 12, 'bold'), background='white')
