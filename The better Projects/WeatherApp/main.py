@@ -12,7 +12,8 @@ def receivedError(city):
 
 
 # Displaying Weather Information
-def displayWeather(data):
+def displayKelvin(data,dataWindow):
+    dataWindow.destroy()  # close the Celsius window
     theJSON = json.loads(data)
     dataWindow = Toplevel()
     dataWindow.title("Weather in " + theJSON["name"])
@@ -28,15 +29,11 @@ def displayWeather(data):
     maxLabel = Label(dataWindow, text="Max-temp : " + str(theJSON["main"]["temp_max"]) + "K", font=('Arial', 13, 'bold'),  background='white')
     maxLabel.pack(pady=10)
 
-    convertCelsiusButton = Button(dataWindow, text="Press to convert to celsius", font=('Arial', 14, 'bold'), padx=10, pady=5, command=lambda: convertToCelsius(data, dataWindow))
-    convertCelsiusButton.pack(pady=20)
-
     detailsButton = Button(dataWindow, text="More Details...", font=('Arial', 14, 'bold'), pady=5, command=lambda: displayMoreInformation(data, 'K'))
     detailsButton.pack()
 
-
-def convertToCelsius(data, dataWindow):
-    dataWindow.destroy()  # close the Kelvin window
+def displayCelsius(data):
+    
     theJSON = json.loads(data)
     dataWindow = Toplevel()
     dataWindow.geometry("400x300")
@@ -51,6 +48,9 @@ def convertToCelsius(data, dataWindow):
 
     maxLabel = Label(dataWindow, text="Max-temp : " + str(round(theJSON["main"]["temp_max"] - 273.15, 1)) + "C", font=('Arial', 14, 'bold'), background='white')
     maxLabel.pack(pady=10)
+
+    convertKelvinButton = Button(dataWindow, text="Press to convert to Kelvin", font=('Arial', 14, 'bold'), padx=10, pady=5, command=lambda: displayKelvin(data, dataWindow))
+    convertKelvinButton.pack(pady=20)
     
     detailsButton = Button(dataWindow, text="More Details...", font=('Arial', 14, 'bold'), pady=5, command=lambda: displayMoreInformation(data, 'C'))
     detailsButton.pack(pady=10)
@@ -96,7 +96,7 @@ def getInfoName(city):
         webUrl = urllib.request.urlopen(urlData)
         if (webUrl.getcode() == 200):
             data = webUrl.read()
-            displayWeather(data)
+            displayCelsius(data)
         else:
             receivedError(city)
     except:
