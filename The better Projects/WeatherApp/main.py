@@ -14,7 +14,6 @@ def receivedError(city):
 # Displaying Weather Information
 def displayWeather(data):
     theJSON = json.loads(data)
-    print(theJSON)
     dataWindow = Toplevel()
     dataWindow.title("Weather in " + theJSON["name"])
     dataWindow.geometry("400x300")
@@ -77,13 +76,13 @@ def displayMoreInformation(data, temp):
 
     feelsLabel.pack(pady=10)
 
-    pressureLabel=Label(detailsWindow,text="Pressure : "+str(theJSON["main"]["pressure"]), font=('Arial', 14, 'bold'), background='white')
+    pressureLabel = Label(detailsWindow,text="Pressure : "+str(theJSON["main"]["pressure"]), font=('Arial', 14, 'bold'), background='white')
     pressureLabel.pack(pady=10)
 
-    humidityLabel=Label(detailsWindow,text="Humidity : "+str(theJSON["main"]["humidity"]), font=('Arial', 14, 'bold'), background='white')
+    humidityLabel = Label(detailsWindow,text="Humidity : "+str(theJSON["main"]["humidity"]), font=('Arial', 14, 'bold'), background='white')
     humidityLabel.pack(pady=10)
 
-    visibilityLabel=Label(detailsWindow,text="Visibility : "+str(theJSON["visibility"]), font=('Arial', 14, 'bold'), background='white')
+    visibilityLabel = Label(detailsWindow,text="Visibility : "+str(theJSON["visibility"]), font=('Arial', 14, 'bold'), background='white')
     visibilityLabel.pack(pady=10)
 
 
