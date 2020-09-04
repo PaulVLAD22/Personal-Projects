@@ -3,4 +3,4 @@ Weather desktop app that displays information about a city chosen by the user.
 <li>Requests
 <li>Tkinter
 <li>Json<br>
-<img src="https://i.imgur.com/UcDlPEo.png">
+<img src="https://i.imgur.com/TplFVUb.png">
