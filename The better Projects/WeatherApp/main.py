@@ -20,11 +20,20 @@ def displayWeather(data):
     dataWindow.geometry("400x300")
     dataWindow.configure(background='white')
     #Widgets
-    actLabel = Label(dataWindow, text="Now : " + str(theJSON["main"]["temp"]) + "K", font=('Arial', 13, 'bold'),  background='white').pack(pady=10)
-    minLabel = Label(dataWindow, text="Min-temp : " + str(theJSON["main"]["temp_min"]) + "K", font=('Arial', 13, 'bold'),  background='white').pack(pady=10)
-    maxLabel = Label(dataWindow, text="Max-temp : " + str(theJSON["main"]["temp_max"]) + "K", font=('Arial', 13, 'bold'),  background='white').pack(pady=10)
-    convertCelsiusButton = Button(dataWindow, text="Press to convert to celsius", font=('Arial', 14, 'bold'), padx=10, pady=5, command=lambda: convertToCelsius(data, dataWindow)).pack(pady=20)
-    detailsButton = Button(dataWindow, text="More Details...", font=('Arial', 14, 'bold'), pady=5, command=lambda: displayMoreInformation(data, 'K')).pack()
+    actLabel = Label(dataWindow, text="Now : " + str(theJSON["main"]["temp"]) + "K", font=('Arial', 13, 'bold'),  background='white')
+    actLabel.pack(pady=10)
+
+    minLabel = Label(dataWindow, text="Min-temp : " + str(theJSON["main"]["temp_min"]) + "K", font=('Arial', 13, 'bold'),  background='white')
+    minLabel.pack(pady=10)
+
+    maxLabel = Label(dataWindow, text="Max-temp : " + str(theJSON["main"]["temp_max"]) + "K", font=('Arial', 13, 'bold'),  background='white')
+    maxLabel.pack(pady=10)
+
+    convertCelsiusButton = Button(dataWindow, text="Press to convert to celsius", font=('Arial', 14, 'bold'), padx=10, pady=5, command=lambda: convertToCelsius(data, dataWindow))
+    convertCelsiusButton.pack(pady=20)
+
+    detailsButton = Button(dataWindow, text="More Details...", font=('Arial', 14, 'bold'), pady=5, command=lambda: displayMoreInformation(data, 'K'))
+    detailsButton.pack()
 
 
 def convertToCelsius(data, dataWindow):
@@ -35,10 +44,17 @@ def convertToCelsius(data, dataWindow):
     dataWindow.title("Weather in " + theJSON["name"])
     dataWindow.configure(background='white')
     #Widgets
-    actLabel = Label(dataWindow, text="Now : " + str(round(theJSON["main"]["temp"] - 273.15, 1)) + "C", font=('Arial', 14, 'bold'),  background='white').pack(pady=10)
-    minLabel = Label(dataWindow, text="Min-temp : " + str(round(theJSON["main"]["temp_min"] - 273.15, 1)) + "C", font=('Arial', 14, 'bold'),  background='white').pack(pady=10)
-    maxLabel = Label(dataWindow, text="Max-temp : " + str(round(theJSON["main"]["temp_max"] - 273.15, 1)) + "C", font=('Arial', 14, 'bold'), background='white').pack(pady=10)
-    detailsButton = Button(dataWindow, text="More Details...", font=('Arial', 14, 'bold'), pady=5, command=lambda: displayMoreInformation(data, 'C')).pack(pady=10)
+    actLabel = Label(dataWindow, text="Now : " + str(round(theJSON["main"]["temp"] - 273.15, 1)) + "C", font=('Arial', 14, 'bold'),  background='white')
+    actLabel.pack(pady=10)
+
+    minLabel = Label(dataWindow, text="Min-temp : " + str(round(theJSON["main"]["temp_min"] - 273.15, 1)) + "C", font=('Arial', 14, 'bold'),  background='white')
+    minLabel.pack(pady=10)
+
+    maxLabel = Label(dataWindow, text="Max-temp : " + str(round(theJSON["main"]["temp_max"] - 273.15, 1)) + "C", font=('Arial', 14, 'bold'), background='white')
+    maxLabel.pack(pady=10)
+    
+    detailsButton = Button(dataWindow, text="More Details...", font=('Arial', 14, 'bold'), pady=5, command=lambda: displayMoreInformation(data, 'C'))
+    detailsButton.pack(pady=10)
 
 
 def displayMoreInformation(data, temp):
@@ -47,17 +63,28 @@ def displayMoreInformation(data, temp):
     detailsWindow.title("Details")
     detailsWindow.geometry("400x300")
     detailsWindow.configure(background='white')
-    weatherLabel = Label(detailsWindow, text=theJSON["weather"][0]["main"], font=('Arial', 14, 'bold'),  background='white').pack(pady=10)
-    weatherDescrLabel = Label(detailsWindow, text=theJSON["weather"][0]["description"], font=('Arial', 14, 'bold'),  background='white').pack(pady=10)
+    #Widgets
+    weatherLabel = Label(detailsWindow, text=theJSON["weather"][0]["main"], font=('Arial', 14, 'bold'),  background='white')
+    weatherLabel.pack(pady=10)
+
+    weatherDescrLabel = Label(detailsWindow, text=theJSON["weather"][0]["description"], font=('Arial', 14, 'bold'),  background='white')
+    weatherDescrLabel.pack(pady=10)
 
     if (temp == 'K'):
-        feelsLabel = Label(detailsWindow, text="Feels like : " + str(theJSON["main"]["feels_like"])+"K", font=('Arial', 13, 'bold'),  background='white').pack(pady=10)
+        feelsLabel = Label(detailsWindow, text="Feels like : " + str(theJSON["main"]["feels_like"])+"K", font=('Arial', 13, 'bold'),  background='white')
     else:
-        feelsLabel = Label(detailsWindow, text="Feels like : " + str(round(theJSON["main"]["feels_like"] - 273.15, 1))+"C", font=('Arial', 13, 'bold'),  background='white').pack(pady=10)
+        feelsLabel = Label(detailsWindow, text="Feels like : " + str(round(theJSON["main"]["feels_like"] - 273.15, 1))+"C", font=('Arial', 13, 'bold'),  background='white')
 
-    pressureLabel=Label(detailsWindow,text="Pressure : "+str(theJSON["main"]["pressure"]), font=('Arial', 14, 'bold'), background='white').pack(pady=10)
-    humidityLabel=Label(detailsWindow,text="Humidity : "+str(theJSON["main"]["humidity"]), font=('Arial', 14, 'bold'), background='white').pack(pady=10)
-    visibilityLabel=Label(detailsWindow,text="Visibility : "+str(theJSON["visibility"]), font=('Arial', 14, 'bold'), background='white').pack(pady=10)
+    feelsLabel.pack(pady=10)
+
+    pressureLabel=Label(detailsWindow,text="Pressure : "+str(theJSON["main"]["pressure"]), font=('Arial', 14, 'bold'), background='white')
+    pressureLabel.pack(pady=10)
+
+    humidityLabel=Label(detailsWindow,text="Humidity : "+str(theJSON["main"]["humidity"]), font=('Arial', 14, 'bold'), background='white')
+    humidityLabel.pack(pady=10)
+
+    visibilityLabel=Label(detailsWindow,text="Visibility : "+str(theJSON["visibility"]), font=('Arial', 14, 'bold'), background='white')
+    visibilityLabel.pack(pady=10)
 
 
 
@@ -69,7 +96,6 @@ def getInfoName(city):
         urlData = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + myapikey
         webUrl = urllib.request.urlopen(urlData)
         if (webUrl.getcode() == 200):
-            print("AA")
             data = webUrl.read()
             displayWeather(data)
         else:
