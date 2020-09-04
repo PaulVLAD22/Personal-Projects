@@ -87,7 +87,7 @@ def displayMoreInformation(data, temp):
 
 
 
-def saveSearch(): #Save the user's last 3 searches and create shortcut buttons
+def saveSearch(city,data): #Save the user's last 3 searches and create shortcut buttons
     pass
 
 
