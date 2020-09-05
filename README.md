@@ -1,7 +1,7 @@
 <h1>Personal Projects</h1>
 (To see images of the projects I'm describing here acces them in their specific folder)
 <h3>The better Projects : </h3>
-<h4><li>Weather App<i>(Python-Requests,Tkinter,JSON)</i></h4> - Weather app that displays, using openweathermap.org's current weather data api, live statistics about the weather in different cities.<strong>Even though it lacks content, I think it's better than my other projects because I use more interesting technologies and I look forward to making other more original api-using apps.</strong>
+<h4><li>Weather App<i>(Python-Requests,Tkinter,JSON,Sqlite3)</i></h4> - Weather app that displays, using openweathermap.org's current weather data api, live statistics about the weather in different cities.<strong>Even though it lacks content, I think it's better than my other projects because I use more interesting technologies and I look forward to making other more original api-using apps.</strong>
 
 
 
