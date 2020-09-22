@@ -3,7 +3,7 @@
 <h3>The better Projects : </h3>
 <h4><li>Weather App<i>(Python-Requests,Tkinter,JSON,Sqlite3)</i></h4> - Weather app that displays, using openweathermap.org's current weather data api, live statistics about the weather in different cities.<strong>Even though it lacks content, I think it's better than my other projects because I use more interesting technologies and I look forward to making other more original api-using apps.</strong>
 <h4><li>Library Organizer<i>(Java - MySQL, Swing)</i></h4> - Java program for monitoring data about a library.(add book, add loan, add copies of book, view books, view loans, etc)<br>
-<p>Front End - basic GUI made with java.swing</p>
+Front End - basic GUI made with java.swing<
 <br>
 Back End - connected to MySQL localhost server
 
