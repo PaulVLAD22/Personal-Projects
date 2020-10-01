@@ -9,7 +9,7 @@ Back End - connected to MySQL localhost server
 <h4><li>Desktop Whatsapp Alerter<i>(Python Requests, Tkinter,JSON)</i></h4>-Python Desktop App that has 3 buttons that send different information to me through a whatsapp message.<br>
 Front End: Python Tkinter
 <br>
-Back End: Open weather map API,Gmail API,fixer.io API,CallMeBot A
+Back End: Open weather map API,Gmail API,fixer.io API,CallMeBot API
 
 
 <h3>The others : </h3>
